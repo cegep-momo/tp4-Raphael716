@@ -4,7 +4,7 @@ from view import LCD1602
 from threading import Thread
 import time
 from datetime import datetime
-
+import json
 class Controller:
     def __init__(self):
         self.platine = Platine()
@@ -59,7 +59,22 @@ class Controller:
         LCD1602.write(0, 0, self.lcd_message.ljust(16))
         LCD1602.write(0, 1, "Verification".ljust(16))
         self.lcd_message_old = self.lcd_message
-        
+        evenement = {
+        "datetime": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),  # Format : YYYY-MM-DD HH:MM:SS
+        "valeur_capteur": self.lcd_message
+        }
+
+        try:
+            with open("donnees.json", "r", encoding="utf-8") as fichier:
+                donnees_existantes = json.load(fichier)
+        except (FileNotFoundError, json.JSONDecodeError):
+            donnees_existantes = []
+
+        donnees_existantes.append(evenement)
+
+        with open("donnees.json", "w", encoding="utf-8") as fichier:
+            json.dump(donnees_existantes, fichier, indent=4)
+
         time.sleep(2)
         self.lcd_message = "En attente"
         LCD1602.clear()

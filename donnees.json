@@ -1,0 +1,18 @@
+[
+    {
+        "datetime": "2025-04-17 13:47:31",
+        "valeur_capteur": "Aucun mouvement"
+    },
+    {
+        "datetime": "2025-04-17 13:47:38",
+        "valeur_capteur": "Aucun mouvement"
+    },
+    {
+        "datetime": "2025-04-17 13:48:02",
+        "valeur_capteur": "Aucun mouvement"
+    },
+    {
+        "datetime": "2025-04-17 13:48:53",
+        "valeur_capteur": "Mouvement detecte"
+    }
+]
