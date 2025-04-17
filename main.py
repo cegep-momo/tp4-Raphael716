@@ -2,9 +2,12 @@ from view import LCD1602
 from controler.controler import Controller
 import signal
 import sys
-
+import time
 def signal_handler(sig, frame):
     print("\nArrêt du programme en cours...")
+    LCD1602.clear()
+    LCD1602.write(0,0,"Arret en cour")
+    time.sleep(1.5)
     LCD1602.clear()
     sys.exit(0)
 
